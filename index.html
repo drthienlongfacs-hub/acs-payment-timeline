@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sơ đồ Thanh toán ACS QVP/NSQIP — BVBD 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a0e1a;color:#e2e8f0;min-height:100vh;padding:24px}
+h1{text-align:center;font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.subtitle{text-align:center;color:#94a3b8;font-size:.85rem;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin:0 auto 28px}
+.card{background:linear-gradient(145deg,#131a2e,#1a2240);border:1px solid #1e293b;border-radius:14px;padding:20px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.card.blue::before{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.card.purple::before{background:linear-gradient(90deg,#8b5cf6,#a78bfa)}
+.card.pink::before{background:linear-gradient(90deg,#ec4899,#f472b6)}
+.card.green::before{background:linear-gradient(90deg,#10b981,#34d399)}
+.card.amber::before{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.card.optional{border:1px dashed #475569;opacity:.92}
+.card.optional::after{content:'ĐỀ XUẤT — KHÔNG BẮT BUỘC';position:absolute;top:8px;right:12px;font-size:.6rem;background:#f59e0b22;color:#fbbf24;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:.5px}
+.card h2{font-size:1rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.card h2 .icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.blue .icon{background:#1e3a5f}.purple .icon{background:#3b1f6e}.pink .icon{background:#5c1a3e}.green .icon{background:#0d3b2e}.amber .icon{background:#4a3510}
+table{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:6px}
+th{text-align:left;color:#94a3b8;font-weight:600;padding:6px 8px;border-bottom:1px solid #1e293b;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px}
+td{padding:7px 8px;border-bottom:1px solid rgba(30,41,59,.5)}
+td:last-child{text-align:right;font-weight:600;color:#fbbf24;white-space:nowrap}
+.total-row td{border-top:2px solid #334155;font-weight:700;font-size:.9rem;padding-top:10px}
+.total-row td:last-child{color:#f472b6;font-size:1rem}
+.note{font-size:.72rem;color:#64748b;margin-top:8px;font-style:italic;line-height:1.4}
+.src{font-size:.65rem;color:#3b82f6;margin-top:4px;line-height:1.3}
+.full{grid-column:1/-1}
+.tl{max-width:1100px;margin:0 auto;position:relative;padding:0 0 0 40px}
+.tl::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#3b82f6,#8b5cf6,#ec4899,#f59e0b,#10b981);border-radius:2px}
+.tl-item{position:relative;margin-bottom:18px;padding-left:28px}
+.tl-dot{position:absolute;left:-30px;top:4px;width:18px;height:18px;border-radius:50%;border:3px solid;display:flex;align-items:center;justify-content:center}
+.tl-item:nth-child(1) .tl-dot{border-color:#3b82f6;background:#1e3a5f}
+.tl-item:nth-child(2) .tl-dot{border-color:#8b5cf6;background:#3b1f6e}
+.tl-item:nth-child(3) .tl-dot{border-color:#a78bfa;background:#3b1f6e}
+.tl-item:nth-child(4) .tl-dot{border-color:#ec4899;background:#5c1a3e}
+.tl-item:nth-child(5) .tl-dot{border-color:#f59e0b;background:#4a3510}
+.tl-item:nth-child(6) .tl-dot{border-color:#10b981;background:#0d3b2e}
+.tl-item:nth-child(7) .tl-dot{border-color:#f472b6;background:#5c1a3e}
+.tl-date{font-size:.75rem;font-weight:700;color:#60a5fa;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.tl-title{font-size:.9rem;font-weight:600;margin-bottom:3px}
+.tl-desc{font-size:.78rem;color:#94a3b8;line-height:1.4}
+.tl-amount{display:inline-block;background:rgba(251,191,36,.12);color:#fbbf24;padding:2px 10px;border-radius:6px;font-weight:700;font-size:.82rem;margin-top:4px}
+.tl-tag{display:inline-block;background:#f59e0b22;color:#fbbf24;padding:1px 6px;border-radius:4px;font-size:.65rem;font-weight:700;margin-left:6px}
+.grand{text-align:center;margin:28px auto 0;max-width:600px;background:linear-gradient(145deg,#1a1040,#2d1a50);border:1px solid #8b5cf6;border-radius:16px;padding:20px}
+.grand h3{font-size:.85rem;color:#a78bfa;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.grand .num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.grand .sub{font-size:.75rem;color:#64748b;margin-top:4px}
+.grand .breakdown{font-size:.8rem;color:#94a3b8;margin-top:8px;line-height:1.6}
+.sect{font-size:1.1rem;font-weight:700;color:#e2e8f0;margin:28px auto 14px;max-width:1100px;padding-left:4px;display:flex;align-items:center;gap:8px}
+.sect::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,#334155,transparent)}
+.warn{background:#f59e0b15;border:1px solid #f59e0b44;border-radius:8px;padding:10px 14px;margin:12px auto;max-width:1100px;font-size:.78rem;color:#fbbf24;line-height:1.5}
+</style>
+</head>
+<body>
+
+<h1>SƠ ĐỒ THANH TOÁN ACS QVP / NSQIP</h1>
+<p class="subtitle">Bệnh viện Bình Dân — Năm tham gia 2026 · Timeline: Ký kết T6 → Site Visit T12</p>
+
+<div class="sect">💰 PHẦN I — Chi phí BẮT BUỘC (theo HPA & Addendum)</div>
+<div class="grid">
+
+<div class="card blue">
+<h2><span class="icon">📋</span> A. Phí thường niên NSQIP + QVP (Bundled)</h2>
+<table>
+<tr><th>Hạng mục</th><th>USD</th></tr>
+<tr><td>ACS QVP Focused Verification (riêng lẻ)</td><td>$27,852</td></tr>
+<tr><td>ACS NSQIP (riêng lẻ)</td><td>$27,852</td></tr>
+<tr class="total-row"><td>Bundled Fee (QVP Focused + NSQIP)</td><td>$27,852</td></tr>
+</table>
+<p class="note">⚡ Gói QVP Focused + NSQIP bundled cùng giá $27,852 — tiết kiệm $27,852 so với đăng ký riêng lẻ.<br>Thanh toán hàng năm theo hợp đồng HPA. ACS phát hành hóa đơn 60 ngày trước ngày gia hạn.</p>
+<p class="src">📄 Căn cứ: Biểu phí chương trình ACS NSQIP/QVP — facs.org</p>
+</div>
+
+<div class="card purple">
+<h2><span class="icon">✈️</span> B. Phí Site Visit In-Person (T12/2026)</h2>
+<table>
+<tr><th>Hạng mục</th><th>USD</th></tr>
+<tr><td>International Participation Surcharge</td><td>$5,000</td></tr>
+<tr><td>In-Person Site Visit Fee</td><td>$10,000</td></tr>
+<tr><td style="font-weight:700;color:#94a3b8" colspan="2">— Reimbursable Expenses (BV hoàn trả cho ACS) —</td></tr>
+<tr><td>Vé máy bay Business class (4 reviewer)</td><td>$20,000</td></tr>
+<tr><td>Khách sạn (5 đêm, 4 người)</td><td>$4,000</td></tr>
+<tr><td>Ăn uống & per diem</td><td>$2,000</td></tr>
+<tr><td>Di chuyển nội địa</td><td>$1,000</td></tr>
+<tr><td>E-Visa (4 người)</td><td>$200</td></tr>
+<tr><td>Travel Clinic</td><td>$240</td></tr>
+<tr><td>Travel Insurance</td><td>$750</td></tr>
+<tr><td>Contingency 10%</td><td>$2,819</td></tr>
+<tr class="total-row"><td>Tổng Site Visit</td><td>$46,009</td></tr>
+</table>
+<p class="note">📌 $15,000 (Phụ phí quốc tế + Phí kiểm định) thanh toán TRƯỚC khi ACS lên lịch.<br>$31,009 chi phí hoàn trả — ACS phát hành hóa đơn SAU khi hoàn thành kiểm định, BV thanh toán trước khi nhận báo cáo kết quả.</p>
+<p class="src">📄 Căn cứ: Fee Schedule A — Phụ lục Kiểm định trực tiếp QVP, Hợp đồng với BVBĐ</p>
+</div>
+
+<div class="card pink">
+<h2><span class="icon">🎓</span> C. Đào tạo & Thi SCR (4 người)</h2>
+<table>
+<tr><th>Hạng mục</th><th>Đơn giá</th><th>SL</th><th>Tổng</th></tr>
+<tr><td>SCR Training + Certification Exam</td><td>$2,500</td><td>4</td><td style="color:#fbbf24">$10,000</td></tr>
+<tr class="total-row"><td colspan="3">Tổng SCR</td><td>$10,000</td></tr>
+</table>
+<p class="note">✅ Phí đào tạo và thi chứng chỉ SCR: $2,500 USD/người.<br>Nhân viên SCR phải hoàn thành khóa đào tạo trực tuyến và đạt chứng chỉ trước khi được phép nhập liệu vào hệ thống NSQIP Registry.</p>
+<p class="src">📄 Căn cứ: HPA Mục 10 — Quy định về nhân sự thu thập dữ liệu (Data Collectors)</p>
+</div>
+
+<div class="card amber full" style="border:2px solid #334155">
+<h2><span class="icon">📊</span> Tổng hợp chi phí BẮT BUỘC năm 2026</h2>
+<table>
+<tr><th>Nhóm</th><th>Thời điểm thanh toán</th><th style="text-align:right">USD</th></tr>
+<tr><td>A. Phí thường niên Bundled (QVP + NSQIP)</td><td>T6/2026 — khi ký HPA</td><td>$27,852</td></tr>
+<tr><td>B1. Intl Surcharge + Site Visit Fee</td><td>T9–10/2026 — trước khi ACS lên lịch</td><td>$15,000</td></tr>
+<tr><td>B2. Reimbursable Expenses</td><td>T12/2026–T1/2027 — sau site visit</td><td>$31,009</td></tr>
+<tr><td>C. Đào tạo SCR (4 × $2,500)</td><td>T7–8/2026</td><td>$10,000</td></tr>
+<tr class="total-row"><td colspan="2"><strong>TỔNG CHI PHÍ BẮT BUỘC</strong></td><td>$83,861</td></tr>
+</table>
+</div>
+</div>
+
+<!-- PHẦN II: Đề xuất -->
+<div class="sect">🏷️ PHẦN II — ĐỀ XUẤT: Tham dự Hội nghị QLCL ACS (theo TS Dũng đề xuất — KHÔNG bắt buộc)</div>
+
+<div class="warn">
+⚠️ Chi phí dưới đây là <strong>ĐỀ XUẤT của TS Dũng</strong> — không phải yêu cầu bắt buộc từ ACS. Việc tham dự hội nghị giúp networking, cập nhật Standards mới, nhưng KHÔNG ảnh hưởng đến QVP Verification.
+</div>
+
+<div class="grid">
+<div class="card green optional full">
+<h2><span class="icon">🌐</span> D. Hội nghị ACS QSCC 2026 — Orlando, FL (30/7 – 2/8/2026)</h2>
+<table>
+<tr><th>Hạng mục</th><th>Chi tiết</th><th style="text-align:right">USD/người</th></tr>
+<tr><td colspan="3" style="color:#60a5fa;font-size:.72rem;padding-top:6px;font-weight:700">Lệ phí đăng ký hội nghị (Conference Registration Fee)</td></tr>
+<tr><td>Participant — Early Bird (đăng ký sớm)</td><td>BV tham gia chương trình QLCL của ACS → áp dụng mức này. Đăng ký trước 17/6/2026</td><td>$495</td></tr>
+<tr><td>Participant — Standard (đăng ký thường)</td><td>18/6 – 29/7/2026</td><td>$595</td></tr>
+<tr><td>Non-Participant — Early Bird</td><td>BV chưa tham gia chương trình QLCL ACS. Trước 17/6/2026</td><td>$995</td></tr>
+<tr><td>Hội thảo trước hội nghị (Preconference Workshop)</td><td>Phí riêng, yêu cầu đăng ký toàn bộ hội nghị</td><td>+$125</td></tr>
+<tr><td colspan="3" style="color:#60a5fa;font-size:.72rem;padding-top:10px;font-weight:700">Chi phí đi lại (cho 1 người, vé hạng phổ thông Economy, nối chuyến)</td></tr>
+<tr><td>Vé máy bay khứ hồi SGN → MCO</td><td>Không có bay thẳng TP.HCM → Orlando.<br>• Vietnam Airlines bay thẳng SGN→SFO (San Francisco): $800–1,500 khứ hồi<br>• + Nội địa SFO→MCO (Orlando): $150–300 khứ hồi<br>• Hoặc Korean Air/ANA nối chuyến qua Seoul/Tokyo</td><td>$1,100–1,800</td></tr>
+<tr><td>Khách sạn Hyatt Regency Orlando (giá ưu đãi đoàn ACS)</td><td>Giá đoàn hội nghị: <strong>$209–$258/đêm/phòng</strong> (chưa thuế). Ở 2 người/phòng → <strong>$105–$129/đêm/người</strong>.<br>Đặt trước <strong>3/7/2026</strong> qua link ACS hoặc gọi 402-593-5048.<br>4 đêm (29/7 – 2/8)</td><td>$418–516</td></tr>
+<tr><td colspan="3" style="color:#60a5fa;font-size:.72rem;padding-top:8px;font-weight:700">Phương án thay thế: Khách sạn giá hợp lý gần địa điểm hội nghị</td></tr>
+<tr><td>Rosen Plaza Hotel ⭐⭐⭐⭐</td><td>Nối cầu bộ hành với Trung tâm Hội nghị. Không phí resort. 2 người/phòng, 4 đêm</td><td>~$300–400</td></tr>
+<tr><td>Hampton Inn — Convention Center ⭐⭐⭐</td><td>Cách 4 phút lái xe. Bữa sáng nóng miễn phí. 2 người/phòng, 4 đêm</td><td>~$250–350</td></tr>
+<tr><td>Tru by Hilton — Convention Center ⭐⭐⭐</td><td>Hiện đại, bữa sáng + WiFi miễn phí. 2 người/phòng, 4 đêm</td><td>~$225–325</td></tr>
+<tr><td>Di chuyển sân bay MCO ↔ Khách sạn</td><td>Taxi hoặc Uber ~$40/lượt × 2 lượt</td><td>$80</td></tr>
+<tr><td>Ăn uống ngoài giờ hội nghị</td><td>Hội nghị đã bao gồm bữa trưa + giải lao có phục vụ</td><td>$200–300</td></tr>
+<tr><td>Phí thị thực Mỹ MRV (Machine Readable Visa)</td><td>Phí nộp đơn xin thị thực không định cư loại B1/B2 tại Đại sứ quán/Lãnh sự quán Hoa Kỳ. Phí không hoàn lại.</td><td>$185</td></tr>
+<tr><td colspan="3" style="color:#10b981;font-size:.72rem;padding-top:10px;font-weight:700">Tổng ước tính cho 1 người tham dự (2 người/phòng, mức Participant Early Bird)</td></tr>
+<tr class="total-row"><td colspan="2"><strong>TỔNG CHO 1 NGƯỜI (ở Hyatt, giá đoàn, 2 người/phòng)</strong></td><td>$2,478–3,376</td></tr>
+<tr><td colspan="2" style="font-size:.72rem;color:#64748b">TỔNG 1 người nếu ở Hampton Inn/Tru by Hilton (2 người/phòng)</td><td style="font-size:.78rem;color:#94a3b8">$2,285–2,910</td></tr>
+</table>
+<p class="note" style="line-height:1.7">
+📌 <strong>Công thức tổng 1 người (2 người/phòng, ở Hyatt)</strong>: $495 (lệ phí) + $1,100–1,800 (vé máy bay) + $418–516 (khách sạn 4 đêm ÷ 2) + $80 (taxi) + $200–300 (ăn uống) + $185 (thị thực MRV) = <strong>$2,478 – $3,376</strong>.<br>
+📌 United Airlines có mã giảm giá hội nghị: <strong>ZRPV686526</strong> tại united.com.<br>
+📌 Southwest Airlines giảm giá qua SWABIZ® (Mã công ty: 90038793), áp dụng 27/7–5/8/2026.<br>
+📌 Hủy đăng ký trước 30/6/2026: hoàn tiền trừ $75. Sau 1/7/2026: <strong>KHÔNG hoàn</strong>.
+</p>
+<p class="note" style="margin-top:6px;color:#94a3b8;font-style:normal;line-height:1.7">
+<strong>Giải thích viết tắt:</strong><br>
+• <strong>QSCC</strong> = Quality, Safety & Cancer Conference (Hội nghị Chất lượng, An toàn & Ung thư)<br>
+• <strong>SGN</strong> = Sân bay Tân Sơn Nhất, TP.HCM · <strong>MCO</strong> = Sân bay quốc tế Orlando · <strong>SFO</strong> = Sân bay San Francisco<br>
+• <strong>MRV</strong> = Machine Readable Visa — Phí nộp đơn xin thị thực Mỹ đọc được bằng máy (không hoàn lại)<br>
+• <strong>B1/B2</strong> = Loại thị thực không định cư Hoa Kỳ (B1: công tác, B2: du lịch/y tế)<br>
+• <strong>RT</strong> = Round Trip — Vé khứ hồi<br>
+• <strong>Early Bird</strong> = Đăng ký sớm (mức phí ưu đãi)<br>
+• <strong>Participant</strong> = Bệnh viện đã tham gia chương trình QLCL của ACS (NSQIP/QVP)
+</p>
+<p class="src">📄 Nguồn: facs.org/quality-safety-conference/registration + facs.org/travel-and-accommodations (truy cập 6/5/2026)</p>
+</div>
+</div>
+
+<!-- TIMELINE -->
+<div class="sect">📅 Trình tự thanh toán theo thời gian</div>
+<div class="tl">
+
+<div class="tl-item">
+<div class="tl-dot"></div>
+<div class="tl-date">Tháng 6/2026 — Ký kết HPA</div>
+<div class="tl-title">Ký Hospital Participation Agreement + Thanh toán phí thường niên</div>
+<div class="tl-desc">ACS gửi invoice ngay khi nhận HPA có chữ ký. Thanh toán trong vòng 30 ngày. Deadline đăng ký Early Bird hội nghị: 17/6/2026.</div>
+<div class="tl-amount">$27,852 — Bundled NSQIP + QVP Focused</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-dot"></div>
+<div class="tl-date">Tháng 7/2026 — Đào tạo SCR</div>
+<div class="tl-title">Đăng ký & thanh toán đào tạo SCR cho 4 nhân sự</div>
+<div class="tl-desc">4 SCR hoàn thành khóa đào tạo online + thi chứng chỉ. Bắt đầu nhập liệu NSQIP Registry.</div>
+<div class="tl-amount">$10,000 — SCR Training (4 × $2,500)</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-dot"></div>
+<div class="tl-date">30/7 – 2/8/2026 — Hội nghị ACS QSCC</div>
+<div class="tl-title">Tham dự ACS Quality, Safety & Cancer Conference tại Orlando, FL <span class="tl-tag">ĐỀ XUẤT — TS DŨNG</span></div>
+<div class="tl-desc">Hyatt Regency Orlando. Phí Participant Early Bird: $495/người. Đặt phòng trước 3/7/2026 để hưởng group rate. Dùng mã United Airlines ZRPV686526.</div>
+<div class="tl-amount">$495+/người (phí hội nghị) + vé máy bay + lưu trú</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-dot"></div>
+<div class="tl-date">Tháng 9–10/2026 — Chuẩn bị Site Visit</div>
+<div class="tl-title">Thanh toán International Surcharge + In-Person Site Visit Fee</div>
+<div class="tl-desc">ACS yêu cầu thanh toán TRƯỚC khi bắt đầu lên lịch và sắp xếp đoàn reviewer. Hoàn thành PRQ.</div>
+<div class="tl-amount">$15,000 — Advance Payment</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-dot"></div>
+<div class="tl-date">Tháng 12/2026 — Site Visit</div>
+<div class="tl-title">Đoàn ACS đến BVBĐ — 5 ngày (3 ngày review + 2 ngày travel)</div>
+<div class="tl-desc">4 reviewer (3 expert + 1 program staff). BV cung cấp phiên dịch, di chuyển nội địa, bảo đảm an ninh.</div>
+<div class="tl-amount">Chi phí phát sinh ghi nhận — Invoice sau</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-dot"></div>
+<div class="tl-date">Tháng 1/2027 — Thanh toán hoàn trả</div>
+<div class="tl-title">ACS gửi invoice Reimbursable Expenses</div>
+<div class="tl-desc">Thanh toán trong 30 ngày. BÁO CÁO verification chỉ được phát hành SAU KHI thanh toán đủ.</div>
+<div class="tl-amount">$31,009 — Reimbursable Expenses</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-dot"></div>
+<div class="tl-date">Tháng 2–3/2027 — Nhận kết quả</div>
+<div class="tl-title">ACS phát hành Final Verification Report</div>
+<div class="tl-desc">BVBĐ chính thức được công nhận ACS NSQIP QVP-Focused Verified Hospital.</div>
+<div class="tl-amount">Hoàn tất — QVP Verified ✅</div>
+</div>
+</div>
+
+<div class="grand">
+<h3>Tổng chi phí</h3>
+<div class="num">$83,861 USD</div>
+<div class="sub">Chi phí BẮT BUỘC — theo HPA + Site Visit Addendum</div>
+<div class="breakdown">
+Phí thường niên $27,852 + Site Visit $46,009 + SCR $10,000<br>
+<span style="color:#fbbf24;font-weight:600">+ Hội nghị QSCC (TS Dũng đề xuất): $495/người + vé máy bay + lưu trú</span>
+</div>
+<div class="sub" style="margin-top:10px">Năm tiếp theo (không site visit): $27,852/năm · Site visit mỗi 3 năm: +$46,009</div>
+</div>
+
+<p style="text-align:center;color:#475569;font-size:.7rem;margin-top:20px;line-height:1.6">
+Căn cứ lập bảng:<br>
+• Biểu phí chương trình ACS NSQIP/QVP — facs.org<br>
+• Fee Schedule A — Phụ lục Kiểm định trực tiếp QVP, Hợp đồng với BVBĐ<br>
+• Phí hội nghị: facs.org/quality-safety-conference (truy cập 06/05/2026)<br>
+• HPA Mục 10 — Quy định nhân sự thu thập dữ liệu<br>
+• Giá vé máy bay tham khảo: Vietnam Airlines, Korean Air, ANA (tháng 5/2026)<br>
+Phòng Quản lý Chất lượng — Bệnh viện Bình Dân | Cập nhật: 06/05/2026
+</p>
+
+</body>
+</html>
