@@ -43,16 +43,19 @@ h1{font-size:2.6rem;font-weight:800;color:#1e40af;text-align:center;margin-botto
 .req{list-style:none;padding:0;margin:14px 0 0}
 .req li{position:relative;padding:18px 20px 18px 52px;margin-bottom:14px;background:#f1f5f9;border-radius:12px;font-size:1.25rem;line-height:1.8;border:2px solid #e2e8f0;font-weight:500}
 .req li::before{content:attr(data-n);position:absolute;left:14px;top:20px;width:28px;height:28px;border-radius:50%;background:#1e40af;color:#fff;font-size:.9rem;font-weight:800;display:flex;align-items:center;justify-content:center}
-.req li .en{color:#64748b;font-size:1rem;display:block;margin-top:8px;border-top:2px dashed #e2e8f0;padding-top:8px;font-style:italic;line-height:1.7;font-weight:400}
+.req li .en{color:#64748b;font-size:1rem;display:none;margin-top:8px;border-top:2px dashed #e2e8f0;padding-top:8px;font-style:italic;line-height:1.7;font-weight:400}
+.toggle-en{display:inline-block;margin-top:6px;padding:3px 10px;background:#dbeafe;color:#1e40af;border:none;border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer}
+.toggle-en:hover{background:#bfdbfe}
 
 /* Tables — viền rõ, chữ to */
-table{width:100%;border-collapse:collapse;font-size:1.2rem;margin:16px 0}
-th{text-align:left;color:#475569;font-weight:700;padding:14px 16px;border-bottom:3px solid #cbd5e1;font-size:1rem;text-transform:uppercase;letter-spacing:.5px;background:#f1f5f9}
-td{padding:16px 16px;border-bottom:2px solid #f1f5f9;vertical-align:top;line-height:1.7;font-weight:500}
-.tag{display:inline-block;padding:6px 16px;border-radius:8px;font-size:1rem;font-weight:700;letter-spacing:.3px}
+table{width:100%;border-collapse:collapse;font-size:1.25rem;margin:16px 0}
+th{text-align:left;color:#1e293b;font-weight:700;padding:14px 16px;border-bottom:3px solid #94a3b8;font-size:1.1rem;text-transform:uppercase;letter-spacing:.5px;background:#e2e8f0}
+td{padding:16px 16px;border-bottom:2px solid #e2e8f0;vertical-align:top;line-height:1.7;font-weight:500}
+.tag{display:inline-block;padding:8px 18px;border-radius:8px;font-size:1.1rem;font-weight:700;letter-spacing:.3px;white-space:nowrap}
 .tag.done{background:#d1fae5;color:#065f46;border:2px solid #6ee7b7}
-.tag.pending{background:#fef3c7;color:#92400e;border:2px solid #fcd34d}
-.tag.na{background:#f1f5f9;color:#64748b;border:2px solid #cbd5e1}
+.tag.pending{background:#fef3c7;color:#78350f;border:2px solid #f59e0b}
+.tag.na{background:#f1f5f9;color:#334155;border:2px solid #94a3b8}
+.en-inline{font-size:.95rem;color:#64748b;display:none;margin-top:4px;font-style:italic}
 
 /* Letter content — cỡ lớn */
 .letter-grid{display:grid;grid-template-columns:40px 1fr;gap:0;margin:10px 0}
@@ -121,7 +124,7 @@ td{padding:16px 16px;border-bottom:2px solid #f1f5f9;vertical-align:top;line-hei
 <!-- SECTION 3: Letter (IAC.1.1) -->
 <div class="sect s3"><span class="num">3</span> Nội dung Thư Cam kết (IAC.1.1) — 5 mục bắt buộc</div>
 <div class="card green">
-<p style="font-size:.78rem;color:#94a3b8;margin-bottom:10px">Thư từ Giám đốc BV phải bao gồm <strong style="color:#34d399">đủ 5 mục</strong> sau:</p>
+<p style="font-size:1.15rem;color:#475569;margin-bottom:14px;font-weight:600">Thư từ Giám đốc BV phải bao gồm <strong style="color:#047857">đủ 5 mục</strong> sau:</p>
 <div class="letter-grid">
 <div class="letter-key">(a)</div>
 <div class="letter-val">Mô tả tổng quan <strong>Chương trình Chất lượng và An toàn Phẫu thuật</strong><br><span class="cite">→ Giới thiệu QVP Focused, NSQIP, 4 IPU, CDMS</span></div>
@@ -147,22 +150,22 @@ td{padding:16px 16px;border-bottom:2px solid #f1f5f9;vertical-align:top;line-hei
 <table>
 <tr><th style="width:100px">Mã</th><th>Yêu cầu</th><th style="width:100px;text-align:center">Trạng thái</th></tr>
 <tr>
-<td style="font-weight:700;color:#fbbf24">IAC.1.1</td>
+<td style="font-weight:800;color:#b45309;font-size:1.15rem">IAC.1.1</td>
 <td><strong>Thư cam kết</strong> từ Giám đốc BV — 5 mục (a–e) như trên</td>
 <td style="text-align:center"><span class="tag pending">⏳ Chờ chỉ đạo</span></td>
 </tr>
 <tr>
-<td style="font-weight:700;color:#fbbf24">IAC.1.2</td>
-<td><strong>Sơ đồ tổ chức bệnh viện</strong> — tất cả khoa/phòng và mối quan hệ với BGĐ<br><span style="font-size:.7rem;color:#94a3b8">"Attach an organizational chart that illustrates your hospital's infrastructure, including all departments and their relationship to each other and hospital administration"</span></td>
+<td style="font-weight:800;color:#b45309;font-size:1.15rem">IAC.1.2</td>
+<td><strong>Sơ đồ tổ chức bệnh viện</strong> — tất cả khoa/phòng và mối quan hệ với BGĐ</td>
 <td style="text-align:center"><span class="tag pending">⏳ Chưa có</span></td>
 </tr>
 <tr>
-<td style="font-weight:700;color:#fbbf24">IAC.1.3</td>
-<td><strong>Sơ đồ hội đồng/ủy ban</strong> hỗ trợ chất lượng và an toàn phẫu thuật — lãnh đạo, kết nối với BGĐ<br><span style="font-size:.7rem;color:#94a3b8">"Provide an organizational diagram, including the different committees/governing bodies that support surgical quality and safety functions/initiatives, their leaders, and the connections between them and hospital administrative leadership"</span></td>
+<td style="font-weight:800;color:#b45309;font-size:1.15rem">IAC.1.3</td>
+<td><strong>Sơ đồ hội đồng/ủy ban</strong> hỗ trợ chất lượng và an toàn phẫu thuật — lãnh đạo, kết nối với BGĐ</td>
 <td style="text-align:center"><span class="tag pending">⏳ Chưa có</span></td>
 </tr>
 <tr>
-<td style="font-weight:700;color:#fbbf24">PRQ Q7</td>
+<td style="font-weight:800;color:#b45309;font-size:1.15rem">PRQ Q7</td>
 <td><strong>Danh sách phẫu thuật viên</strong> được cấp phép tại BV</td>
 <td style="text-align:center"><span class="tag pending">⏳ Chưa có</span></td>
 </tr>
@@ -173,7 +176,7 @@ td{padding:16px 16px;border-bottom:2px solid #f1f5f9;vertical-align:top;line-hei
 <!-- SECTION 5: PRQ Q4-6 -->
 <div class="sect s5"><span class="num">5</span> Câu hỏi PRQ liên quan (Q4–Q6)</div>
 <div class="card pink">
-<p style="font-size:.78rem;color:#94a3b8;margin-bottom:8px">ACS yêu cầu BV trả lời 3 câu về <strong style="color:#f472b6">cơ chế xin nguồn lực chất lượng</strong>:</p>
+<p style="font-size:1.15rem;color:#475569;margin-bottom:12px;font-weight:600">ACS yêu cầu BV trả lời 3 câu về <strong style="color:#be185d">cơ chế xin nguồn lực chất lượng</strong>:</p>
 <ol class="req">
 <li data-n="Q4">
 <strong>Có cơ chế sẵn không?</strong> — BV có diễn đàn hoặc quy trình nào để yêu cầu nguồn lực cho chất lượng và an toàn?
@@ -199,7 +202,7 @@ td{padding:16px 16px;border-bottom:2px solid #f1f5f9;vertical-align:top;line-hei
 </div>
 
 <div class="card blue" style="margin-top:12px">
-<p style="font-size:.82rem;font-weight:700;color:#60a5fa;margin-bottom:8px">📋 Việc cần làm trước khi nộp hồ sơ:</p>
+<p style="font-size:1.3rem;font-weight:800;color:#1e40af;margin-bottom:12px">📋 Việc cần làm trước khi nộp hồ sơ:</p>
 <table>
 <tr><th>#</th><th>Hạng mục</th><th style="text-align:center">Ưu tiên</th></tr>
 <tr><td>1</td><td>Xây dựng <strong>sơ đồ tổ chức BV</strong> (IAC.1.2)</td><td style="text-align:center;color:#ef4444;font-weight:700">🔴 Cao</td></tr>
