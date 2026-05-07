@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAC.1 — Yêu cầu Cam kết Lãnh đạo | ACS QVP 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a0e1a;color:#e2e8f0;min-height:100vh;padding:24px 20px;max-width:960px;margin:0 auto}
+h1{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:4px}
+.sub{text-align:center;color:#94a3b8;font-size:.8rem;margin-bottom:6px}
+.source-badge{text-align:center;margin-bottom:24px}
+.source-badge span{display:inline-block;background:#1e293b;border:1px solid #334155;border-radius:6px;padding:4px 12px;font-size:.68rem;color:#60a5fa;font-weight:600;letter-spacing:.3px}
+
+/* Section */
+.sect{font-size:1rem;font-weight:700;color:#e2e8f0;margin:28px 0 12px;display:flex;align-items:center;gap:8px}
+.sect::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,#334155,transparent)}
+.sect .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:7px;font-size:.75rem;font-weight:800;flex-shrink:0}
+.s1 .num{background:#1e3a5f;color:#60a5fa}
+.s2 .num{background:#3b1f6e;color:#a78bfa}
+.s3 .num{background:#0d3b2e;color:#34d399}
+.s4 .num{background:#4a3510;color:#fbbf24}
+.s5 .num{background:#5c1a3e;color:#f472b6}
+
+/* Card */
+.card{background:linear-gradient(145deg,#131a2e,#1a2240);border:1px solid #1e293b;border-radius:12px;padding:16px 18px;margin-bottom:12px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.card.blue::before{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.card.purple::before{background:linear-gradient(90deg,#8b5cf6,#a78bfa)}
+.card.green::before{background:linear-gradient(90deg,#10b981,#34d399)}
+.card.amber::before{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.card.pink::before{background:linear-gradient(90deg,#ec4899,#f472b6)}
+
+/* Definition box */
+.def{background:#0f172a;border-left:3px solid #60a5fa;padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.82rem;line-height:1.6;color:#cbd5e1;font-style:italic}
+.def strong{color:#60a5fa;font-style:normal}
+
+/* Requirement list */
+.req{list-style:none;padding:0;margin:8px 0 0}
+.req li{position:relative;padding:8px 12px 8px 32px;margin-bottom:6px;background:#0f172a;border-radius:8px;font-size:.82rem;line-height:1.5;border:1px solid #1e293b}
+.req li::before{content:attr(data-n);position:absolute;left:10px;top:9px;width:16px;height:16px;border-radius:50%;background:#1e3a5f;color:#60a5fa;font-size:.6rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.req li .en{color:#94a3b8;font-size:.72rem;display:block;margin-top:4px;border-top:1px dashed #1e293b;padding-top:4px;font-style:italic}
+
+/* Attachment table */
+table{width:100%;border-collapse:collapse;font-size:.8rem;margin:8px 0}
+th{text-align:left;color:#94a3b8;font-weight:600;padding:6px 8px;border-bottom:1px solid #334155;font-size:.68rem;text-transform:uppercase;letter-spacing:.4px}
+td{padding:7px 8px;border-bottom:1px solid rgba(30,41,59,.5);vertical-align:top}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.65rem;font-weight:700;letter-spacing:.3px}
+.tag.done{background:#10b98122;color:#34d399}
+.tag.pending{background:#f59e0b22;color:#fbbf24}
+.tag.na{background:#64748b22;color:#94a3b8}
+
+/* Letter content */
+.letter-grid{display:grid;grid-template-columns:32px 1fr;gap:0;margin:6px 0}
+.letter-key{font-weight:800;color:#a78bfa;font-size:.85rem;padding-top:8px}
+.letter-val{padding:8px 0 8px 8px;border-bottom:1px solid #1e293b;font-size:.8rem;line-height:1.5}
+.letter-val:last-child{border-bottom:none}
+.letter-val .cite{color:#3b82f6;font-size:.68rem;display:block;margin-top:2px}
+
+/* Status summary */
+.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.stat-card{background:#0f172a;border-radius:10px;padding:14px;text-align:center;border:1px solid #1e293b}
+.stat-card .big{font-size:1.8rem;font-weight:800}
+.stat-card .label{font-size:.7rem;color:#94a3b8;margin-top:2px}
+.stat-card.ok .big{color:#34d399}
+.stat-card.warn .big{color:#fbbf24}
+
+/* Notes */
+.note{font-size:.72rem;color:#64748b;margin-top:6px;line-height:1.5}
+.cite-src{font-size:.65rem;color:#3b82f6;margin-top:4px}
+
+/* Footer */
+.footer{text-align:center;color:#475569;font-size:.68rem;margin-top:28px;padding-top:16px;border-top:1px solid #1e293b;line-height:1.6}
+
+@media print{body{background:#fff;color:#1a1a1a;max-width:100%}
+.card{border-color:#ddd;background:#f9f9f9}.def{background:#f0f4f8;border-color:#3b82f6}
+.req li{background:#f5f5f5;border-color:#ddd}.tag.done{background:#d1fae5;color:#065f46}.tag.pending{background:#fef3c7;color:#92400e}}
+</style>
+</head>
+<body>
+
+<h1>TIÊU CHUẨN IAC.1 — CAM KẾT LÃNH ĐẠO</h1>
+<p class="sub">ACS Quality Verification Program · 2026 Standards · Bệnh viện Bình Dân</p>
+<div class="source-badge"><span>📄 Nguồn: Optimal Resources for Surgical Quality and Safety — ACS 2026, trang 3</span></div>
+
+<!-- SECTION 1: Definition -->
+<div class="sect s1"><span class="num">1</span> IAC.1 là gì?</div>
+<div class="card blue">
+<div class="def">
+<strong>IAC.1 — Leadership Commitment and Engagement to Surgical Quality and Safety</strong><br><br>
+"Hospital administrators demonstrate commitment through <strong>engaged leadership</strong> and <strong>financial resources</strong> to support surgical quality and ensure alignment with hospital strategic priorities."
+</div>
+<p class="note">💡 <strong>Nói ngắn gọn:</strong> Ban Giám đốc phải chứng minh cam kết bằng <u>hành động cụ thể</u> (lãnh đạo chủ động + phân bổ nguồn lực tài chính), không chỉ bằng lời nói.</p>
+<p class="cite-src">📄 ACS QVP 2026 Standards, trang 3 — IAC.1 Definition and Requirements</p>
+</div>
+
+<!-- SECTION 2: 3 Requirements -->
+<div class="sect s2"><span class="num">2</span> 3 Yêu cầu nền tảng</div>
+<div class="card purple">
+<ol class="req">
+<li data-n="1">
+<strong>Phân bổ nguồn lực + Tham gia trực tiếp</strong> — Lãnh đạo BV chứng minh cam kết thông qua phân bổ nguồn lực và tham gia trực tiếp vào các ưu tiên chất lượng — an toàn.
+<span class="en">"Hospital leadership has demonstrated commitment to supporting quality and safety through resource allocation to and engagement with quality and safety priorities."</span>
+</li>
+<li data-n="2">
+<strong>Truyền thông hiệu quả</strong> — Có cơ chế truyền thông về các ưu tiên và sáng kiến CLAT tới lãnh đạo cấp trung và bác sĩ lâm sàng.
+<span class="en">"There is effective communication regarding quality and safety priorities/initiatives to mid-level leadership and clinicians."</span>
+</li>
+<li data-n="3">
+<strong>Cơ chế phản hồi</strong> — Có kênh phản hồi từ các sáng kiến đang triển khai lên lãnh đạo cấp bệnh viện.
+<span class="en">"There are mechanisms for feedback from ongoing initiatives to hospital-level leadership."</span>
+</li>
+</ol>
+<p class="cite-src">📄 ACS QVP 2026 Standards, trang 3 — 3 bullets dưới "Definition and Requirements"</p>
+</div>
+
+<!-- SECTION 3: Letter (IAC.1.1) -->
+<div class="sect s3"><span class="num">3</span> Nội dung Thư Cam kết (IAC.1.1) — 5 mục bắt buộc</div>
+<div class="card green">
+<p style="font-size:.78rem;color:#94a3b8;margin-bottom:10px">Thư từ Giám đốc BV phải bao gồm <strong style="color:#34d399">đủ 5 mục</strong> sau:</p>
+<div class="letter-grid">
+<div class="letter-key">(a)</div>
+<div class="letter-val">Mô tả tổng quan <strong>Chương trình Chất lượng và An toàn Phẫu thuật</strong><br><span class="cite">→ Giới thiệu QVP Focused, NSQIP, 4 IPU, CDMS</span></div>
+
+<div class="letter-key">(b)</div>
+<div class="letter-val">Các <strong>sáng kiến cải tiến chất lượng toàn viện trong 12 tháng</strong> gần đây — lĩnh vực phẫu thuật<br><span class="cite">→ Cần liệt kê cụ thể: problem → intervention → outcome</span></div>
+
+<div class="letter-key">(c)</div>
+<div class="letter-val"><strong>Sự tham gia của lãnh đạo BV</strong> vào các nỗ lực chất lượng và an toàn phẫu thuật<br><span class="cite">→ BGĐ phê duyệt, giám sát, chỉ đạo trực tiếp — không chỉ ủy quyền</span></div>
+
+<div class="letter-key">(d)</div>
+<div class="letter-val"><strong>Đầu tư tài chính</strong> hiện tại và tương lai cho chất lượng và an toàn phẫu thuật<br><span class="cite">→ Ngân sách CDMS, nhân sự SCR, đào tạo, hạ tầng CNTT, phí ACS</span></div>
+
+<div class="letter-key">(e)</div>
+<div class="letter-val"><strong>Cam kết chăm sóc dựa trên đội nhóm và bằng chứng</strong><br><span class="cite">→ Multidisciplinary team, evidence-based protocols, Five Phases of Care</span></div>
+</div>
+<p class="cite-src">📄 ACS QVP 2026 Standards, trang 3 — HOSPITAL ATTACHMENT IAC.1.1 (a–e)</p>
+</div>
+
+<!-- SECTION 4: Attachments -->
+<div class="sect s4"><span class="num">4</span> Tài liệu đính kèm bắt buộc</div>
+<div class="card amber">
+<table>
+<tr><th style="width:100px">Mã</th><th>Yêu cầu</th><th style="width:100px;text-align:center">Trạng thái</th></tr>
+<tr>
+<td style="font-weight:700;color:#fbbf24">IAC.1.1</td>
+<td><strong>Thư cam kết</strong> từ Giám đốc BV — 5 mục (a–e) như trên</td>
+<td style="text-align:center"><span class="tag done">✅ Đã soạn</span></td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#fbbf24">IAC.1.2</td>
+<td><strong>Sơ đồ tổ chức bệnh viện</strong> — tất cả khoa/phòng và mối quan hệ với BGĐ<br><span style="font-size:.7rem;color:#94a3b8">"Attach an organizational chart that illustrates your hospital's infrastructure, including all departments and their relationship to each other and hospital administration"</span></td>
+<td style="text-align:center"><span class="tag pending">⏳ Chưa có</span></td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#fbbf24">IAC.1.3</td>
+<td><strong>Sơ đồ hội đồng/ủy ban</strong> hỗ trợ chất lượng và an toàn phẫu thuật — lãnh đạo, kết nối với BGĐ<br><span style="font-size:.7rem;color:#94a3b8">"Provide an organizational diagram, including the different committees/governing bodies that support surgical quality and safety functions/initiatives, their leaders, and the connections between them and hospital administrative leadership"</span></td>
+<td style="text-align:center"><span class="tag pending">⏳ Chưa có</span></td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#fbbf24">PRQ Q7</td>
+<td><strong>Danh sách phẫu thuật viên</strong> được cấp phép tại BV</td>
+<td style="text-align:center"><span class="tag pending">⏳ Chưa có</span></td>
+</tr>
+</table>
+<p class="cite-src">📄 ACS QVP 2026 Standards, trang 3 + PRQ 2022, trang 1</p>
+</div>
+
+<!-- SECTION 5: PRQ Q4-6 -->
+<div class="sect s5"><span class="num">5</span> Câu hỏi PRQ liên quan (Q4–Q6)</div>
+<div class="card pink">
+<p style="font-size:.78rem;color:#94a3b8;margin-bottom:8px">ACS yêu cầu BV trả lời 3 câu về <strong style="color:#f472b6">cơ chế xin nguồn lực chất lượng</strong>:</p>
+<ol class="req">
+<li data-n="Q4">
+<strong>Có cơ chế sẵn không?</strong> — BV có diễn đàn hoặc quy trình nào để yêu cầu nguồn lực cho chất lượng và an toàn?
+<span class="en">"Is there an a priori mechanism or forum for requesting quality and safety resources (e.g., registry participation, external quality program participation, FTE support, educational opportunities)?"</span>
+</li>
+<li data-n="Q5">
+<strong>Mô tả cơ chế</strong> — Nếu có, mô tả quy trình cụ thể.
+</li>
+<li data-n="Q6">
+<strong>Cách ưu tiên</strong> — Mô tả cách các yêu cầu nguồn lực được xem xét và sắp xếp thứ tự ưu tiên.
+</li>
+</ol>
+<p class="cite-src">📄 PRQ Hospital 2022, trang 1 — Questions 4, 5, 6</p>
+</div>
+
+<!-- STATUS SUMMARY -->
+<div class="sect s1" style="margin-top:32px"><span class="num">✓</span> Tổng hợp trạng thái</div>
+<div class="status-grid">
+<div class="stat-card ok"><div class="big">5/5</div><div class="label">Nội dung thư IAC.1.1 (a–e)</div></div>
+<div class="stat-card ok"><div class="big">3/3</div><div class="label">Sáng kiến CTCL (QI.4.1)</div></div>
+<div class="stat-card warn"><div class="big">1/3</div><div class="label">Attachments (IAC.1.1–1.3)</div></div>
+<div class="stat-card warn"><div class="big">0/3</div><div class="label">PRQ Q4–Q6 (cơ chế nguồn lực)</div></div>
+</div>
+
+<div class="card blue" style="margin-top:12px">
+<p style="font-size:.82rem;font-weight:700;color:#60a5fa;margin-bottom:8px">📋 Việc cần làm trước khi nộp hồ sơ:</p>
+<table>
+<tr><th>#</th><th>Hạng mục</th><th style="text-align:center">Ưu tiên</th></tr>
+<tr><td>1</td><td>Xây dựng <strong>sơ đồ tổ chức BV</strong> (IAC.1.2)</td><td style="text-align:center;color:#ef4444;font-weight:700">🔴 Cao</td></tr>
+<tr><td>2</td><td>Xây dựng <strong>sơ đồ hội đồng CLAT phẫu thuật</strong> (IAC.1.3)</td><td style="text-align:center;color:#ef4444;font-weight:700">🔴 Cao</td></tr>
+<tr><td>3</td><td>Soạn trả lời <strong>PRQ Q4–Q6</strong> — cơ chế xin nguồn lực</td><td style="text-align:center;color:#f59e0b;font-weight:700">🟡 TB</td></tr>
+<tr><td>4</td><td>Hoàn thiện <strong>danh sách phẫu thuật viên</strong> (PRQ Q7)</td><td style="text-align:center;color:#f59e0b;font-weight:700">🟡 TB</td></tr>
+<tr><td>5</td><td>BGĐ <strong>ký + đóng dấu</strong> thư cam kết</td><td style="text-align:center;color:#ef4444;font-weight:700">🔴 Cao</td></tr>
+</table>
+</div>
+
+<div class="footer">
+<strong>Tài liệu tham chiếu:</strong><br>
+① ACS. <em>Optimal Resources for Surgical Quality and Safety</em>. 2026 Standards, trang 3 (IAC.1)<br>
+② ACS QVP Hospital Pre-Review Questionnaire (PRQ). 2022 Edition, trang 1<br>
+③ ACS QVP Enrollment Checklist, Phiên bản 03b<br>
+④ Hu QL et al. <em>Evidence Review for ACS Quality Verification Part I</em>. J Am Coll Surg. 2020;231(5):557-569<br><br>
+Phòng Quản lý Chất lượng — Bệnh viện Bình Dân | Cập nhật: 07/05/2026
+</div>
+
+</body>
+</html>
